@@ -4,15 +4,17 @@ public class Usuario {
     private String login;
     private String contraseña;
     private Boolean conectado;
+    private String email;
 
     public String getLogin() {
         return login;
     }
 
-    public Usuario(String login, String contraseña) {
+    public Usuario(String login, String contraseña,String email) {
         this.login = login;
         this.contraseña = contraseña;
         this.conectado = Boolean.FALSE;
+        this.email = email;
     }
     
     public boolean isConectado (){
@@ -37,6 +39,14 @@ public class Usuario {
             this.conectado = Boolean.FALSE;
         }
         return result;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 }
