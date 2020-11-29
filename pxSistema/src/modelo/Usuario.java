@@ -1,34 +1,42 @@
-
 package modelo;
 
-/**
- *
- * @author JORGE ZAVALETA
- */
 public class Usuario {
-    private String nombre;
-    private String contrasena;
+    private String login;
+    private String contraseña;
+    private Boolean conectado;
 
-    public Usuario(String nombre, String contrasena) {
-        this.nombre = nombre;
-        this.contrasena = contrasena;
+    public String getLogin() {
+        return login;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public Usuario(String login, String contraseña) {
+        this.login = login;
+        this.contraseña = contraseña;
+        this.conectado = Boolean.FALSE;
     }
     
+    public boolean isConectado (){
+        return this.conectado;
+    } 
+    
+    public boolean ingresar(String login, String contraseña){
+        boolean result = false;
+        if( this.login.equalsIgnoreCase(login) && 
+                this.contraseña.equals(contraseña) &&
+                !isConectado()
+                ){
+            result = true;
+            this.conectado = Boolean.TRUE;
+        }        
+        return result;
+    }
+    public boolean salir(){
+        boolean result = false;
+        if(isConectado()){
+            result = true;
+            this.conectado = Boolean.FALSE;
+        }
+        return result;
+    }
     
 }
